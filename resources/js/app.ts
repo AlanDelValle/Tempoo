@@ -8,10 +8,11 @@ import { initializeFlashToast } from '@/lib/flashToast';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => title || 'Tempoo',
     layout: (name) => {
         switch (true) {
             case name === 'Welcome':
+            case name === 'Weather/Index': 
                 return null;
             case name.startsWith('auth/'):
                 return AuthLayout;
