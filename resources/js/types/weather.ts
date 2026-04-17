@@ -67,8 +67,8 @@ export interface CurrentWeather {
     wind_direction_10m: number
     precipitation: number
     weather_code: number
-    uv_index: number        // ← novo
-    surface_pressure: number // ← novo
-    cloud_cover: number     // ← novo
-    visibility: number      // ← novo
+    uv_index: number
+    surface_pressure: number
+    cloud_cover: number
+    visibility: number
 }

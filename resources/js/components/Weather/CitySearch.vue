@@ -92,7 +92,7 @@ function onBlur() {
             </div>
         </div>
 
-        <!-- Dropdown de resultados -->
+        <!-- Dropdown -->
         <Transition
             enter-active-class="transition duration-150 ease-out"
             enter-from-class="opacity-0 -translate-y-1"
