@@ -222,8 +222,8 @@ onMounted(() => requestLocation())
 
             <!-- Header -->
             <header class="w-full max-w-lg flex items-center justify-between mb-8">
-                <span class="text-white text-2xl font-bold tracking-tight">
-                    Tempoo <span class="text-xl">🌤</span>
+                <span class="text-white text-2xl font-bold tracking-tight montserrat-alternates-regular">
+                    Tempoo
                 </span>
                 <button
                     v-if="!loading"
@@ -443,8 +443,10 @@ onMounted(() => requestLocation())
 
                             <!-- Chance de chuva -->
                             <div class="flex items-center gap-1 text-sky-300 text-xs w-12 justify-center">
-                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2S5 10 5 14a7 7 0 0 0 14 0C19 10 12 2 12 2z"/>
+                                <svg class="w-5 h-5 text-sky-300" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                                    <path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/>
                                 </svg>
                                 {{ data.weather.daily.precipitation_probability_max[i] ?? 0 }}%
                             </div>
