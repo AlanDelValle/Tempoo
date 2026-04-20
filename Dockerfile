@@ -1,4 +1,4 @@
-FROM php:8.3-cli AS php-deps
+FROM php:8.4-cli AS php-deps
 
 # Extensões PHP necessárias para Laravel
 RUN apt-get update && apt-get install -y \
@@ -22,7 +22,7 @@ COPY --from=php-deps /app /app
 RUN npm ci && npm run build
 
 # ─── Stage 3: Runtime ──────────────────────────────────────────────────────────
-FROM php:8.3-cli AS runtime
+FROM php:8.4-cli AS runtime
 
 RUN apt-get update && apt-get install -y \
     libzip-dev libpng-dev libonig-dev libxml2-dev \
