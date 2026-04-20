@@ -23,6 +23,7 @@ export default defineConfig({
         }),
         wayfinder({
             formVariants: true,
+            generateTypes: process.env.NODE_ENV !== 'production',
         }),
     ],
 });
