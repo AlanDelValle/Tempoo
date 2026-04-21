@@ -24,6 +24,12 @@ FROM node:22-slim AS node-build
 COPY --from=php-deps /app /app
 
 WORKDIR /app
+
+# O plugin Wayfinder sempre tenta rodar "php artisan wayfinder:generate"
+# durante o build. Os arquivos já foram gerados no stage php-deps,
+# então criamos um stub que faz o comando "ter sucesso" sem fazer nada.
+RUN printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/php && chmod +x /usr/local/bin/php
+
 RUN npm ci && npm run build
 
 # ─── Stage 3: Runtime ──────────────────────────────────────────────────────────
