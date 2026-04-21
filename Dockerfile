@@ -13,19 +13,15 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
+# Pre-generate Wayfinder types here, where PHP is available.
+# The node-build stage will copy these files and the Vite plugin
+# will skip the `php artisan` call because the files already exist.
+RUN php artisan wayfinder:generate --with-form
+
 # ─── Stage 2: Node build ───────────────────────────────────────────────────────
 FROM node:22-slim AS node-build
-# node-build stage
-RUN apt-get update && apt-get install -y --no-install-recommends libreadline8 && rm -rf /var/lib/apt/lists/*
 
-# Copia PHP do stage anterior para o wayfinder conseguir rodar php artisan
-RUN php artisan wayfinder:generate --with-form
-COPY --from=php-deps /usr/local/bin/php          /usr/local/bin/php
-COPY --from=php-deps /usr/local/lib/php          /usr/local/lib/php
-COPY --from=php-deps /usr/local/etc/php          /usr/local/etc/php
 COPY --from=php-deps /app /app
-
-RUN apt-get update && apt-get install -y --no-install-recommends libreadline8 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 RUN npm ci && npm run build
