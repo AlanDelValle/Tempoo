@@ -22,7 +22,7 @@ export default defineConfig({
             },
         }),
         wayfinder({
-            formVariants: true,            
+            formVariants: true,     
         }),
     ],
 });

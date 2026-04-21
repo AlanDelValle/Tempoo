@@ -19,6 +19,7 @@ FROM node:22-slim AS node-build
 RUN apt-get update && apt-get install -y --no-install-recommends libreadline8 && rm -rf /var/lib/apt/lists/*
 
 # Copia PHP do stage anterior para o wayfinder conseguir rodar php artisan
+RUN php artisan wayfinder:generate --with-form
 COPY --from=php-deps /usr/local/bin/php          /usr/local/bin/php
 COPY --from=php-deps /usr/local/lib/php          /usr/local/lib/php
 COPY --from=php-deps /usr/local/etc/php          /usr/local/etc/php
