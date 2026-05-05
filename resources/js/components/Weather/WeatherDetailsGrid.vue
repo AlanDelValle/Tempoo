@@ -33,33 +33,6 @@ defineProps<{
             <span class="text-white/45 text-xs text-center leading-tight">Sensação Térmica</span>
         </div>
 
-        <!-- Umidade -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
-            <svg class="w-7 h-7 text-blue-300" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2S5 10 5 14a7 7 0 0 0 14 0C19 10 12 2 12 2z"/>
-            </svg>
-            <span class="text-white text-xl font-semibold">
-                {{ current.relative_humidity_2m }}%
-            </span>
-            <span class="text-white/45 text-xs">Umidade</span>
-        </div>
-
-        <!-- Vento -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
-            <svg class="w-7 h-7 text-emerald-300" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
-                <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
-                <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
-            </svg>
-            <span class="text-white text-xl font-semibold">
-                {{ Math.round(current.wind_speed_10m) }}
-            </span>
-            <span class="text-white/45 text-xs text-center leading-tight">
-                km/h {{ getWindDir(current.wind_direction_10m) }}
-            </span>
-        </div>
-
         <!-- Precipitação -->
         <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
             <svg class="w-7 h-7 text-sky-300" viewBox="0 0 24 24" fill="none"
@@ -71,6 +44,17 @@ defineProps<{
                 {{ current.precipitation }}<span class="text-sm font-normal">mm</span>
             </span>
             <span class="text-white/45 text-xs">Precipitação</span>
+        </div>
+
+        <!-- Umidade -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
+            <svg class="w-7 h-7 text-blue-300" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2S5 10 5 14a7 7 0 0 0 14 0C19 10 12 2 12 2z"/>
+            </svg>
+            <span class="text-white text-xl font-semibold">
+                {{ current.relative_humidity_2m }}%
+            </span>
+            <span class="text-white/45 text-xs">Umidade</span>
         </div>
 
         <!-- Índice UV -->
@@ -89,6 +73,34 @@ defineProps<{
             </span>
         </div>
 
+        <!-- Cobertura de Nuvens -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
+            <svg class="w-7 h-7 text-slate-300" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+            </svg>
+            <span class="text-white text-xl font-semibold">
+                {{ current.cloud_cover }}%
+            </span>
+            <span class="text-white/45 text-xs text-center leading-tight">Cobertura de Nuvens</span>
+        </div>
+
+        <!-- Vento -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
+            <svg class="w-7 h-7 text-emerald-300" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+                <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+                <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+            </svg>
+            <span class="text-white text-xl font-semibold">
+                {{ Math.round(current.wind_speed_10m) }}
+            </span>
+            <span class="text-white/45 text-xs text-center leading-tight">
+                km/h {{ getWindDir(current.wind_direction_10m) }}
+            </span>
+        </div>        
+
         <!-- Pressão -->
         <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
             <svg class="w-7 h-7 text-violet-300" viewBox="0 0 24 24" fill="none"
@@ -101,19 +113,7 @@ defineProps<{
                 {{ Math.round(current.surface_pressure) }}
             </span>
             <span class="text-white/45 text-xs">hPa · Pressão</span>
-        </div>
-
-        <!-- Cobertura de Nuvens -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
-            <svg class="w-7 h-7 text-slate-300" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-            </svg>
-            <span class="text-white text-xl font-semibold">
-                {{ current.cloud_cover }}%
-            </span>
-            <span class="text-white/45 text-xs text-center leading-tight">Cobertura de Nuvens</span>
-        </div>
+        </div>        
 
         <!-- Visibilidade -->
         <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center gap-2">
