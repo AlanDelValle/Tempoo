@@ -6,6 +6,7 @@ import WeatherMainCard from '@/components/Weather/WeatherMainCard.vue'
 import WeatherDetailsGrid from '@/components/Weather/WeatherDetailsGrid.vue'
 import WeatherAlerts from '@/components/Weather/WeatherAlerts.vue'
 import WeatherForecast from '@/components/Weather/WeatherForecast.vue'
+import WeatherHourlyChart from '@/components/Weather/WeatherHourlyChart.vue'
 import type { WeatherResponse, CityResult } from '@/types/weather'
 
 defineOptions({ layout: undefined })
@@ -149,6 +150,9 @@ onMounted(() => requestLocation())
 
                 <!-- Alertas Meteorológicos -->
                 <WeatherAlerts :current="data.weather.current" />
+
+                <!-- Gráficos horários -->
+                <WeatherHourlyChart :hourly="data.weather.hourly" />
 
                 <!-- Previsão 7 Dias -->
                 <WeatherForecast :daily="data.weather.daily" />

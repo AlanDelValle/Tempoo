@@ -17,6 +17,17 @@ export interface CurrentWeather {
     wind_direction_10m: number
     precipitation: number
     weather_code: number
+    uv_index: number
+    surface_pressure: number
+    cloud_cover: number
+    visibility: number
+}
+
+export interface HourlyWeather {
+    time: string[]
+    temperature_2m: number[]
+    precipitation: number[]
+    precipitation_probability: number[]
 }
 
 export interface DailyWeather {
@@ -32,6 +43,7 @@ export interface DailyWeather {
 export interface WeatherApiData {
     current: CurrentWeather
     current_units: Record<string, string>
+    hourly: HourlyWeather
     daily: DailyWeather
     daily_units: Record<string, string>
     timezone: string
@@ -56,19 +68,4 @@ export interface CityResult {
     country: string
     latitude: number
     longitude: number
-}
-
-export interface CurrentWeather {
-    time: string
-    temperature_2m: number
-    apparent_temperature: number
-    relative_humidity_2m: number
-    wind_speed_10m: number
-    wind_direction_10m: number
-    precipitation: number
-    weather_code: number
-    uv_index: number
-    surface_pressure: number
-    cloud_cover: number
-    visibility: number
 }

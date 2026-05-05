@@ -39,6 +39,11 @@ class WeatherController extends Controller
                     'wind_direction_10m', 'precipitation', 'weather_code',
                     'uv_index', 'surface_pressure', 'cloud_cover', 'visibility',
                 ]),
+                'hourly'       => implode(',', [
+                    'temperature_2m',
+                    'precipitation',
+                    'precipitation_probability',
+                ]),
                 'daily'        => implode(',', [
                     'temperature_2m_max', 'temperature_2m_min',
                     'precipitation_sum', 'precipitation_probability_max',
